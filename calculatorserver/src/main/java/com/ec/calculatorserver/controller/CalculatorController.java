@@ -1,6 +1,7 @@
 package com.ec.calculatorserver.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,6 +14,8 @@ import com.ec.calculatorserver.service.CalculatorService;
 
 @RestController
 @RequestMapping("/calculator")
+//temporarily allowing CORS for localhost and port 4200 of angular to access this controller
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 public class CalculatorController {
 
 	@Autowired
