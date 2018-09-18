@@ -92,10 +92,10 @@ public class CalculatorService {
 		BigDecimal secondValue = new BigDecimal(secondNumber);
 		// comparing if value is greater than ZERO
 		if (secondValue.compareTo(BigDecimal.ZERO) == 1) {
-			return true;
+			return false;
 		}
 		ERROR_MESSAGE = "Number divisible by Zero";
-		return false;
+		return true;
 	}
 
 }

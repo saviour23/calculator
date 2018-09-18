@@ -58,15 +58,15 @@ public class CalculatorController {
 	@RequestMapping(value = "/calculate/division", method = RequestMethod.GET)
 	public String getDivisionOfNumbers(@RequestParam(value = "firstnumber") String firstNumber,
 			@RequestParam(value = "secondnumber") String secondNumber) {
-		if (calcService.isValidNumbers(firstNumber, secondNumber) && calcService.isDivisibleByZero(secondNumber)) {
+		if (calcService.isValidNumbers(firstNumber, secondNumber) && !calcService.isDivisibleByZero(secondNumber)) {
 			CalculatorPojo pojoObject = getPojo(firstNumber, secondNumber);
-			return calcService.calculate(pojoObject, Operator.MULTIPLICATION);
+			return calcService.calculate(pojoObject, Operator.DIVISION);
 		}
 		return calcService.getErrorMessage();
 	}
 
 	@RequestMapping(value = "/calculate/pow", method = RequestMethod.GET)
-	public String pow(@RequestParam(value = "base") String base, @RequestParam(value = "ext") String ext) {
+	public String getPow(@RequestParam(value = "base") String base, @RequestParam(value = "ext") String ext) {
 		if (calcService.isValidNumbers(base, ext)) {
 			CalculatorPojo pojoObject = getPojo(base, ext);
 			return calcService.calculate(pojoObject, Operator.POWER);
@@ -75,10 +75,10 @@ public class CalculatorController {
 	}
 
 	@RequestMapping("calculate/sqrt/{num}")
-	public String sqrt(@PathVariable(value = "num") String firstOperand) {
+	public String getSqrt(@PathVariable(value = "num") String firstOperand) {
 		if (calcService.isValidNumbers(firstOperand, "1")) {
 			CalculatorPojo pojoObject = new CalculatorPojo(firstOperand);
-			return calcService.calculate(pojoObject, Operator.POWER);
+			return calcService.calculate(pojoObject, Operator.SQUAREROOT);
 		}
 		return calcService.getErrorMessage();
 
