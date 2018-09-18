@@ -1,0 +1,43 @@
+<div class="container">
+	<form (ngSubmit)="onSubmit()" #calcForm="ngForm">
+		<div class="form-group">
+			<label for="firstName">First Number</label> <input
+				class="form-control" id="firstNumber" required
+				[(ngModel)]="data.firstNumber" name="firstNumber"
+				#firstNameVar="ngModel">
+			<div [hidden]="firstNameVar.valid || firstNameVar.pristine"
+				class="alert alert-danger">First Number is required</div>
+		</div>
+
+
+
+		<div class="form-group">
+			<label for="operator">Operator</label> <select id="operatorList"
+				class="form-control" required [(ngModel)]="data.operator"
+				name="operator" (change)="onChange()">
+				<option value="">--Select Operator--</option>
+				<option *ngFor="let oper of operators" [value]="oper">{{oper}}</option>
+				
+			</select>
+
+		</div>
+
+
+		<div class="form-group" [hidden]="!secondVarRequired">
+			<label for="secondName">Second Number</label> <input type="text"
+				class="form-control" id="secondName" required
+				[(ngModel)]="data.secondNumber" name="secondNumber">
+		</div>
+
+
+		<button type="submit" class="btn btn-success"
+			[disabled]="!calcForm.form.valid">Submit</button>
+
+	</form>
+
+</div>
+
+
+<div [hidden]="!submitted">
+	<label>Result:</label>{{result}}
+</div>
