@@ -1,10 +1,10 @@
 # Simple Calculator
 
-### Server and GUI are integrated. GUI hits respective rest micro-service exposed by server.
+### Server and GUI are integrated. GUI hits respective rest micro-service exposed by serer described below.
 
 #### GUI is developed using Angular 6
 
-#### Server is developed using spring-boot 2.5
+#### Server is developed using spring-boot 2.0.5.RELEASE
 
 # GUI
 
