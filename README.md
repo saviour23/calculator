@@ -65,3 +65,12 @@ http://localhost:8080/calculator/sqrt/10
 
 #### @GET
 http://localhost:8080/calculator/pow?base=2&ext=3
+
+
+
+# CORS
+
+For Cross-Origin Resource Sharing Server controller class (CalculatorController.java) is annotated with hardcoded ip/port as below
+`
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+`
